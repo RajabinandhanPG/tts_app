@@ -37,7 +37,7 @@ class EnhancedTTSService:
         self.default_voices = {
             "elevenlabs": "21m00Tcm4TlvDq8ikWAM",
             "edge_tts": "en-US-ChristopherNeural",
-            "lemonfox": "charles"
+            "lemonfox": "sarah"  # Updated to default voice from documentation
         }
     
     def set_service(self, service, api_key=None, save_to_env=False):
@@ -108,9 +108,11 @@ class EnhancedTTSService:
                 "xi-api-key": self.elevenlabs_api_key
             }
         elif self.service_name == "lemonfox":
+            # Updated for LemonFox to match ElevenLabs compatibility
             return {
-                "Authorization": f"Bearer {self.lemonfox_api_key}",
-                "Content-Type": "application/json"
+                "Accept": "audio/mpeg",
+                "Content-Type": "application/json",
+                "xi-api-key": self.lemonfox_api_key
             }
         else:
             return {"Content-Type": "application/json"}
@@ -215,17 +217,26 @@ class EnhancedTTSService:
             raise Exception(error_message)
     
     def _lemonfox_tts(self, text, voice_id, output_path):
-        """LemonFox-specific implementation"""
+        """LemonFox-specific implementation using ElevenLabs-compatible API"""
         if not self.lemonfox_api_key:
             raise ValueError("LemonFox API key is not set")
             
-        url = f"{self.lemonfox_base_url}/tts"
+        # Updated URL structure based on LemonFox documentation
+        url = f"{self.lemonfox_base_url}/text-to-speech/{voice_id}"
         
+        # Add query parameter for output format
+        url += "?output_format=mp3"
+        
+        # Log the URL for debugging
+        logger.info(f"LemonFox request URL: {url}")
+        
+        # Updated data structure to match LemonFox documentation
         data = {
-            "text": text,
-            "voice": voice_id,
-            "format": "mp3"
+            "text": text
         }
+        
+        # Optional language parameter
+        # data["language_code"] = "en-us"
         
         response = requests.post(url, json=data, headers=self.get_headers())
         
@@ -273,7 +284,10 @@ class EnhancedTTSService:
             if not self.lemonfox_api_key:
                 raise ValueError("LemonFox API key is not set")
                 
+            # Use ElevenLabs-compatible endpoint for voices
             url = f"{self.lemonfox_base_url}/voices"
+            logger.info(f"LemonFox voices request URL: {url}")
+            
             response = requests.get(url, headers=self.get_headers())
             
             if response.status_code == 200:
@@ -319,20 +333,24 @@ class EnhancedTTSService:
             if not self.lemonfox_api_key:
                 raise ValueError("LemonFox API key is not set")
                 
-            url = f"{self.lemonfox_base_url}/account"
+            # Using ElevenLabs-compatible endpoint
+            url = f"{self.lemonfox_base_url}/user/subscription"
+            logger.info(f"LemonFox credits request URL: {url}")
+            
             response = requests.get(url, headers=self.get_headers())
             
             if response.status_code == 200:
                 data = response.json()
                 # Return formatted credit information (adjust based on actual API response)
                 return {
-                    "credits_used": data.get("credits_used", 0),
-                    "credits_limit": data.get("credits_limit", 0),
-                    "remaining_credits": data.get("credits_limit", 0) - data.get("credits_used", 0)
+                    "character_count": data.get("character_count", 0),
+                    "character_limit": data.get("character_limit", 0),
+                    "remaining_characters": data.get("character_limit", 0) - data.get("character_count", 0)
                 }
             else:
                 error_message = f"LemonFox error: {response.status_code}, {response.text}"
                 logger.error(error_message)
-                raise Exception(error_message)
+                # Return a friendly message instead of raising an exception for credits check
+                return {"message": "Unable to retrieve LemonFox credits information"}
         else:
             raise ValueError(f"Service {self.service_name} not supported")
