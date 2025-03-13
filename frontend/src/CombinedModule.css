@@ -1,0 +1,133 @@
+/* CombinedModule.css */
+.combined-module-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .combined-module-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .module-description {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #555;
+  }
+  
+  .workflow-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .step {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .step-number {
+    width: 30px;
+    height: 30px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .step-text {
+    font-weight: bold;
+  }
+  
+  .step-arrow {
+    margin: 0 20px;
+    font-size: 24px;
+    color: #666;
+  }
+  
+  .modules-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .ai-section, .tts-section {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  
+  .ai-section h3, .tts-section h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+  }
+  
+  .tts-content {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+  }
+  
+  .tts-content h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  .ai-output-preview {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  .tts-placeholder {
+    background-color: #f5f5f5;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+  }
+  
+  .tts-placeholder p {
+    margin-bottom: 15px;
+  }
+  
+  .tts-placeholder ol {
+    display: inline-block;
+    text-align: left;
+  }
+  
+  .tts-placeholder li {
+    margin-bottom: 8px;
+  }
+  
+  .tts-placeholder code {
+    background-color: #eee;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+  }

@@ -1,0 +1,268 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.step-tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.step-tabs button {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+  font-weight: bold;
+  color: #555;
+}
+
+.step-tabs button.active {
+  border-bottom: 3px solid #0066cc;
+  color: #0066cc;
+}
+
+.step-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.provider-selection {
+  margin-bottom: 20px;
+}
+
+.provider-option {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.radio-option label {
+  margin-left: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.primary-button {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.secondary-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.primary-button:disabled,
+.secondary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #d32f2f;
+  margin-top: 10px;
+}
+
+.loading {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.voices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.voice-card {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.voice-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.voice-card.selected {
+  background-color: #e3f2fd;
+  border-color: #2196f3;
+}
+
+.voice-card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.voice-card p {
+  margin: 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.search-box {
+  margin-bottom: 20px;
+}
+
+.selected-voice {
+  margin: 15px 0;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #e3f2fd;
+  color: #0066cc;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.credits-card {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.credits-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.credits-info p {
+  margin: 5px 0;
+}
+
+.credits-info .remaining {
+  font-weight: bold;
+  color: #0066cc;
+}
+
+.audio-output {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.audio-output audio {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.download-button {
+  display: inline-block;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.voice-categories {
+  margin-top: 20px;
+}
+
+.voice-category {
+  margin-bottom: 25px;
+}
+
+.category-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+.api-key-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.api-key-input small {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #2e7d32;
+}
+
+.save-api-option {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.save-api-option label {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.save-api-hint {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #666;
+  margin-left: 25px;
+}
+
+.text-success {
+  color: #2e7d32;
+}
